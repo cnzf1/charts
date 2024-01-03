@@ -32,10 +32,10 @@ global:
   storageClass: ""
   postgresql:
     username: ""
-    password: ""
+    password: "admin123"
     database: ""
     repmgrUsername: ""
-    repmgrPassword: ""
+    repmgrPassword: "admin123"
     repmgrDatabase: ""
     existingSecret: ""
   ldap:
@@ -43,7 +43,7 @@ global:
     existingSecret: ""
   pgpool:
     adminUsername: ""
-    adminPassword: ""
+    adminPassword: "admin123"
     existingSecret: ""
 
 ## @section Common parameters
@@ -1680,7 +1680,7 @@ metrics:
   service:
     ## @param metrics.service.type PostgreSQL Prometheus exporter metrics service type
     ##
-    type: ClusterIP
+    type: NodePort
     ## @param metrics.service.ports.metrics PostgreSQL Prometheus exporter metrics service port
     ##
     ports:
@@ -1879,7 +1879,7 @@ persistence:
   ## If undefined (the default) or set to null, no storageClassName spec is
   ## set, choosing the default provisioner.
   ##
-  storageClass: ""
+  storageClass: "nfs"
   ## @param persistence.mountPath The path the volume will be mounted at, useful when using different PostgreSQL images.
   ##
   mountPath: /bitnami/postgresql

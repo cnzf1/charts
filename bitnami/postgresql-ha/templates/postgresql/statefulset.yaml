@@ -386,6 +386,7 @@ spec:
           livenessProbe: {{- include "common.tplvalues.render" (dict "value" .Values.postgresql.customLivenessProbe "context" $) | nindent 12 }}
           {{- else if .Values.postgresql.livenessProbe.enabled }}
           livenessProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.postgresql.livenessProbe "enabled") "context" $) | nindent 12 }}
+            initialDelaySeconds: 300
             exec:
               command:
                 - bash
@@ -396,6 +397,7 @@ spec:
           readinessProbe: {{- include "common.tplvalues.render" (dict "value" .Values.postgresql.customReadinessProbe "context" $) | nindent 12 }}
           {{- else if .Values.postgresql.readinessProbe.enabled }}
           readinessProbe: {{- include "common.tplvalues.render" (dict "value" (omit .Values.postgresql.readinessProbe "enabled") "context" $) | nindent 12 }}
+            initialDelaySeconds: 300
             exec:
             {{- if .Values.postgresql.headlessWithNotReadyAddresses }}
               command:
